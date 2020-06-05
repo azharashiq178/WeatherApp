@@ -11,10 +11,19 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
+        if #available(*, iOS 12) {
+            
+            setRootController(in: window)
+        }
+        
+        
         return true
     }
 
@@ -35,3 +44,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+
+
+
+extension UIResponder {
+    
+    
+    func setRootController(in window: UIWindow?) {
+        
+        
+        window?.rootViewController = HomeModule().buildDefault()
+        window?.makeKeyAndVisible()
+        
+    }
+    
+    
+}

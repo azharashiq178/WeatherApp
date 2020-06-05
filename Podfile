@@ -6,6 +6,8 @@ target 'WeatherApp' do
   use_frameworks!
 
   # Pods for WeatherApp
+  pod 'QorumLogs'
+  pod 'R.swift'
 
   target 'WeatherAppTests' do
     inherit! :search_paths
