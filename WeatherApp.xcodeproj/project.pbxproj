@@ -48,6 +48,11 @@
 		7E5D7AC4248AE33A00A8318A /* HomePresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7AC3248AE33A00A8318A /* HomePresenterImp.swift */; };
 		7E5D7AC6248AE35200A8318A /* HomeInteractorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7AC5248AE35200A8318A /* HomeInteractorImp.swift */; };
 		7E5D7AC8248AE35E00A8318A /* HomeRouterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7AC7248AE35E00A8318A /* HomeRouterImp.swift */; };
+		7E5D7ACB248AE6B500A8318A /* ScheduledLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7ACA248AE6B500A8318A /* ScheduledLocationManager.swift */; };
+		7E5D7AD9248AE79600A8318A /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7AD0248AE79600A8318A /* AppUtility.swift */; };
+		7E5D7ADD248AE79600A8318A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7AD4248AE79600A8318A /* Utility.swift */; };
+		7E5D7ADE248AE79600A8318A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7AD5248AE79600A8318A /* AppConstants.swift */; };
+		7E5D7ADF248AE79600A8318A /* StatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D7AD6248AE79600A8318A /* StatusCodes.swift */; };
 		7E7BC94A248ADA12004303F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BC949248ADA12004303F0 /* AppDelegate.swift */; };
 		7E7BC94C248ADA12004303F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7BC94B248ADA12004303F0 /* SceneDelegate.swift */; };
 		7E7BC951248ADA12004303F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7BC94F248ADA12004303F0 /* Main.storyboard */; };
@@ -121,6 +126,11 @@
 		7E5D7AC3248AE33A00A8318A /* HomePresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterImp.swift; sourceTree = "<group>"; };
 		7E5D7AC5248AE35200A8318A /* HomeInteractorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorImp.swift; sourceTree = "<group>"; };
 		7E5D7AC7248AE35E00A8318A /* HomeRouterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouterImp.swift; sourceTree = "<group>"; };
+		7E5D7ACA248AE6B500A8318A /* ScheduledLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledLocationManager.swift; sourceTree = "<group>"; };
+		7E5D7AD0248AE79600A8318A /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		7E5D7AD4248AE79600A8318A /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		7E5D7AD5248AE79600A8318A /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		7E5D7AD6248AE79600A8318A /* StatusCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCodes.swift; sourceTree = "<group>"; };
 		7E7BC946248ADA12004303F0 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7BC949248ADA12004303F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E7BC94B248ADA12004303F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +303,7 @@
 		7E5D7AB0248AE1A700A8318A /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				7E5D7AC9248AE60200A8318A /* LocationManager */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -337,6 +348,33 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		7E5D7AC9248AE60200A8318A /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				7E5D7ACA248AE6B500A8318A /* ScheduledLocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		7E5D7ACC248AE78C00A8318A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7E5D7ACD248AE79600A8318A /* Utilities */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7E5D7ACD248AE79600A8318A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7E5D7AD0248AE79600A8318A /* AppUtility.swift */,
+				7E5D7AD4248AE79600A8318A /* Utility.swift */,
+				7E5D7AD5248AE79600A8318A /* AppConstants.swift */,
+				7E5D7AD6248AE79600A8318A /* StatusCodes.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		7E7BC93D248ADA12004303F0 = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +400,7 @@
 		7E7BC948248ADA12004303F0 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				7E5D7ACC248AE78C00A8318A /* Utilities */,
 				7E5D7AB0248AE1A700A8318A /* Manager */,
 				7E5D7AA5248AE16800A8318A /* Classes */,
 				7E5D7A8E248AE0BB00A8318A /* Libraries */,
@@ -653,18 +692,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E5D7AC6248AE35200A8318A /* HomeInteractorImp.swift in Sources */,
+				7E5D7ADE248AE79600A8318A /* AppConstants.swift in Sources */,
 				7E5D7AC8248AE35E00A8318A /* HomeRouterImp.swift in Sources */,
 				7E5D7A7F248ADD3000A8318A /* CommonDesignables.swift in Sources */,
 				7E5D7ABC248AE2C200A8318A /* HomeInteractor.swift in Sources */,
 				7E5D7A7D248ADD3000A8318A /* NSArray+Additions.swift in Sources */,
 				7E5D7AB6248AE26100A8318A /* HomeModule.swift in Sources */,
+				7E5D7AD9248AE79600A8318A /* AppUtility.swift in Sources */,
 				7E5D7A9E248AE0D400A8318A /* FATextView.swift in Sources */,
 				7E5D7AAF248AE18000A8318A /* BaseView.swift in Sources */,
+				7E5D7ADD248AE79600A8318A /* Utility.swift in Sources */,
 				7E5D7A84248ADD3000A8318A /* NSObjectProtocol+Additions.swift in Sources */,
 				7E5D7A9D248AE0D400A8318A /* FAImageView.swift in Sources */,
 				7E5D7A82248ADD3000A8318A /* UINavigationBar+Additions.swift in Sources */,
 				7E5D7A73248ADD3000A8318A /* UIView+Additions.swift in Sources */,
 				7E5D7AB8248AE29D00A8318A /* HomeView.swift in Sources */,
+				7E5D7ACB248AE6B500A8318A /* ScheduledLocationManager.swift in Sources */,
 				7E5D7A7C248ADD3000A8318A /* UIView+Constraints.swift in Sources */,
 				7E5D7AAD248AE18000A8318A /* Router.swift in Sources */,
 				7E5D7AA0248AE0D400A8318A /* FATextField.swift in Sources */,
@@ -674,6 +717,7 @@
 				7E5D7A9C248AE0D400A8318A /* FAButton.swift in Sources */,
 				7E5D7ABA248AE2BA00A8318A /* HomePresenter.swift in Sources */,
 				7E5D7ABE248AE2CA00A8318A /* HomeRouter.swift in Sources */,
+				7E5D7ADF248AE79600A8318A /* StatusCodes.swift in Sources */,
 				7E5D7AAC248AE18000A8318A /* RouterInterface.swift in Sources */,
 				7E5D7A9B248AE0D400A8318A /* FAWebView.swift in Sources */,
 				7E5D7AA3248AE0D400A8318A /* FAPassCodeTextField.swift in Sources */,

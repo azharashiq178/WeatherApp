@@ -12,4 +12,7 @@ protocol HomeInteractor {
     
     var presenter: HomePresenterImp? { get set }
     
+    
+    func startTrackingUserLocation()
+    
 }
