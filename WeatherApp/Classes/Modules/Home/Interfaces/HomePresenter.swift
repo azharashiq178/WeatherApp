@@ -12,6 +12,6 @@ protocol HomePresenter {
     var interactor: HomeInteractorImp? { get set }
     var router: HomeRouterImp? { get set }
  
-    
+    func populateData(with weatherReportList : [Daily])
     
 }

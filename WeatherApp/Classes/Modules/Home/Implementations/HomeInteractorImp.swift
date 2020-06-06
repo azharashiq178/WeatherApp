@@ -14,6 +14,11 @@ class HomeInteractorImp: HomeInteractor {
 
     var presenter: HomePresenterImp?
     
+    var weatherData : WeatherData?
+    
+    var nextWeekWeatherList = [Daily]()
+    
+    
     fileprivate lazy var scheduleLocationManager = ScheduledLocationManager()
     
     
@@ -21,10 +26,51 @@ class HomeInteractorImp: HomeInteractor {
         startTrackingUserLocation()
     }
     
+    
+    
+    func getHomeScreenContent(at index : Int) -> Daily {
+        return nextWeekWeatherList[index]
+    }
+    
+    
+    
+    func updateHomeScreenContent(with data : Daily) {
+        presenter?.updateHomeScreenContent(with: data)
+    }
+    
+    
     func startTrackingUserLocation() {
         
-        scheduleLocationManager.getUserLocationWithInterval(interval: 30)
+        let timeToRefetchLocationInMinutes = UInt(60 * 30)
+        
+        scheduleLocationManager.getUserLocationWithInterval(interval: timeToRefetchLocationInMinutes)
         scheduleLocationManager.delegate = self
+    }
+    
+    
+    
+    func fetchWeatherForecastDataForSevenDays(with location : CLLocation) {
+        
+        let coordinates = location.coordinate
+        
+        let params : [String : Any] = ["lat" : coordinates.latitude, "lon" : coordinates.longitude, "appid": weatherApiKey]
+        
+        APIProvider().getSevenDaysForecast(with: params, completion: {[weak self](data) in
+            
+            guard let weakSelf = self else { return }
+            weakSelf.weatherData = data
+            
+            if let nextSevenDaysList = data.daily {
+                weakSelf.nextWeekWeatherList = nextSevenDaysList
+                weakSelf.presenter?.populateData(with: nextSevenDaysList)
+                let data = weakSelf.getHomeScreenContent(at: 0)
+                weakSelf.updateHomeScreenContent(with: data)
+            }
+            
+            
+        }) { (error) in
+            Utility.showAlert("", message: error.localizedDescription)
+        }
     }
     
     
@@ -38,6 +84,15 @@ extension HomeInteractorImp: ScheduledLocationManagerDelegate {
     
     func scheduledLocationManage(_ manager: ScheduledLocationManager, didUpdateLocation newLocation: CLLocation) {
         
+        fetchWeatherForecastDataForSevenDays(with: newLocation)
+        
+        newLocation.fetchCityAndCountry { [weak self] (cityName, countryName, error) in
+            guard let weakSelf = self else { return }
+            if error == nil {
+                weakSelf.presenter?.updateCityName(with: cityName ?? "")
+            }
+        }
+        
     }
     
     
@@ -47,3 +102,15 @@ extension HomeInteractorImp: ScheduledLocationManagerDelegate {
     }
 }
 
+
+
+
+
+
+
+
+extension CLLocation {
+    func fetchCityAndCountry(completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first?.locality, $0?.first?.country, $1) }
+    }
+}

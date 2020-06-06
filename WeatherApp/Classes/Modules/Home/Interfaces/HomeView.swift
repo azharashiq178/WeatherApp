@@ -12,5 +12,11 @@ protocol HomeView: BaseView {
     
     var presenter: HomePresenterImp? { get set }
     
+    func reloadData()
     
+    func updateCityName(with name : String)
+    
+    func updateHomeScreenContent(with currentTemperature : String, currentDate : String, temperatureRange : String)
+    
+    func updateWeatherImage(with image : UIImage)
 }

@@ -8,6 +8,9 @@ target 'WeatherApp' do
   # Pods for WeatherApp
   pod 'QorumLogs'
   pod 'R.swift'
+  pod 'ObjectMapper'
+  pod 'Alamofire'
+  pod 'AlamofireImage'
 
   target 'WeatherAppTests' do
     inherit! :search_paths

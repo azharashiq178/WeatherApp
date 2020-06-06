@@ -49,6 +49,13 @@ extension Date {
         return String(format: "\(month)")
     }
     
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        return dateFormatter.string(from: self).uppercased()
+        // or use capitalized(with: locale) if you want
+    }
+    
     func compareDate(compareDate:Date) -> Bool {
         let order = Calendar.current.compare(self, to: compareDate, toGranularity: .day)
         switch order {
