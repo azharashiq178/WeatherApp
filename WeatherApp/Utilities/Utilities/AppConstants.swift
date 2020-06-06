@@ -43,6 +43,8 @@ let googleSDKAPIKey          = "AIzaSyCndwQAX9tLnfKAMZDjv4T0y9X8lra0yBQ"
 let weatherApiKey = "36046bba5800fcced85d0ad91c7c7018"
 
 
+let storedCitiesKey = "storedCities"
+
 
 
 /**

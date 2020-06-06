@@ -10,6 +10,7 @@ import UIKit
 enum Transition {
     case root
     case show
+    case present
     case modally(fromViewController: UIViewController)
 }
 
@@ -33,6 +34,8 @@ extension RouterInterface {
         case .show:
             guard let navigationController = getNavigationController() else { return }
             navigationController.pushViewController(viewController, animated: animated)
+        case .present:
+            UIViewController.topViewController()?.present(viewController, animated: animated, completion: nil)
         case .modally(let fromViewController):            
             viewController.modalPresentationStyle = .overCurrentContext
             fromViewController.present(viewController, animated: true, completion: nil)

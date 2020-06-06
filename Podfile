@@ -11,6 +11,7 @@ target 'WeatherApp' do
   pod 'ObjectMapper'
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'GooglePlaces'
 
   target 'WeatherAppTests' do
     inherit! :search_paths

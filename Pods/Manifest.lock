@@ -2,6 +2,9 @@ PODS:
   - Alamofire (5.1.0)
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
+  - GoogleMaps/Base (3.8.0)
+  - GooglePlaces (3.8.0):
+    - GoogleMaps/Base (= 3.8.0)
   - ObjectMapper (3.5.2)
   - QorumLogs (0.9)
   - R.swift (5.2.2):
@@ -11,6 +14,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - GooglePlaces
   - ObjectMapper
   - QorumLogs
   - R.swift
@@ -19,6 +23,8 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - GoogleMaps
+    - GooglePlaces
     - ObjectMapper
     - QorumLogs
     - R.swift
@@ -27,11 +33,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  GoogleMaps: 7c8d66d70e4e8c300f43a7219d8fdaad7b325a9a
+  GooglePlaces: d5f70c3e9e427964fdeca1301a665d276ccd8754
   ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
   QorumLogs: 9a484df6973a3697ac79fe2273140fde6b36dccc
   R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
   R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
 
-PODFILE CHECKSUM: 33ac7236a28e0d23a3a94a43ee14a735d3f5efab
+PODFILE CHECKSUM: 29fdbf29b6b5a853d1ecae6d31f190cebc71d87f
 
 COCOAPODS: 1.9.1

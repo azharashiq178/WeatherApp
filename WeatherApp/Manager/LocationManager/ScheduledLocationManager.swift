@@ -17,6 +17,7 @@ private let kTimeToGetLocations: UInt = 3 // time to wait for locations
     func scheduledLocationManage(_ manager: ScheduledLocationManager, didFailWithError error: Error)
     func scheduledLocationManage(_ manager: ScheduledLocationManager, didUpdateLocation newLocation: CLLocation)
     @objc optional func scheduledLocationManageDidNotAuthorized(_ manager: ScheduledLocationManager)
+    @objc optional func didAuthorizedUser()
 }
 
 
@@ -261,6 +262,9 @@ extension ScheduledLocationManager: CLLocationManagerDelegate {
         
         if status == .denied {
             delegate?.scheduledLocationManageDidNotAuthorized?(self)
+        }
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            delegate?.didAuthorizedUser?()
         }
         
     }

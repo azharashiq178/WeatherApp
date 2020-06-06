@@ -38,6 +38,10 @@ class Utility:NSObject {
         showCancelTypeAlert("", message: error.localizedDescription, buttonTitle: buttonOK, onController: parentVC)
     }
     
+    static func showAlert(_ error:Error, onController parentVC: UIViewController = rootViewController) {
+        showCancelTypeAlert("", message: error.localizedDescription, buttonTitle: buttonOK, onController: parentVC)
+    }
+    
     static func showAlert(_ title: String, message: String, onController parentVC: UIViewController = rootViewController) {
         showCancelTypeAlert(title, message: message, buttonTitle: buttonOK, onController: parentVC)
     }

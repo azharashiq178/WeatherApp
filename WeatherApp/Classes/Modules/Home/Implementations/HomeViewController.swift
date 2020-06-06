@@ -113,7 +113,7 @@ class HomeViewController: UIViewController, HomeView {
     
     
     @IBAction func moreAction(_ sender : UIButton) {
-        
+        presenter?.showCurrentCitiesScreen()
         
     }
     
@@ -179,3 +179,5 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
         return CGSize.init(width: 50, height: 180)
     }
 }
+
+

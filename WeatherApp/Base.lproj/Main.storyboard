@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -177,20 +178,86 @@
             </objects>
             <point key="canvasLocation" x="139" y="113"/>
         </scene>
-        <!--View Controller-->
+        <!--Current Cities View Controller-->
         <scene sceneID="3uV-p4-AWw">
             <objects>
-                <viewController id="YPn-hQ-qhw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentCitiesViewController" id="YPn-hQ-qhw" customClass="CurrentCitiesViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OXh-VP-3ag">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="9S0-vg-utF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="b0J-x5-YJy">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b0J-x5-YJy" id="kcp-0b-fiM">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YPn-hQ-qhw" id="HDg-38-pN1"/>
+                                    <outlet property="delegate" destination="YPn-hQ-qhw" id="zjf-sI-8K4"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqN-dD-71f">
+                                <rect key="frame" x="350" y="44" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qes-ik-bmg"/>
+                                    <constraint firstAttribute="width" constant="44" id="whQ-KU-si6"/>
+                                </constraints>
+                                <state key="normal" image="cross_icon"/>
+                                <connections>
+                                    <action selector="dismissAction:" destination="YPn-hQ-qhw" eventType="touchUpInside" id="ytC-fu-f7e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lae-Ng-BKj" customClass="FAButton" customModule="WeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="314" y="762" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.20784313730000001" green="0.1333333333" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="3oi-3m-xfX"/>
+                                    <constraint firstAttribute="height" constant="80" id="jGR-zq-cbd"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addNewCity:" destination="YPn-hQ-qhw" eventType="touchUpInside" id="5Vb-Cl-aGH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LIm-hA-rec" firstAttribute="trailing" secondItem="Lae-Ng-BKj" secondAttribute="trailing" constant="20" id="9HK-FX-hPt"/>
+                            <constraint firstItem="9S0-vg-utF" firstAttribute="top" secondItem="OXh-VP-3ag" secondAttribute="top" id="Bum-NN-d4Z"/>
+                            <constraint firstItem="9S0-vg-utF" firstAttribute="leading" secondItem="LIm-hA-rec" secondAttribute="leading" id="Eis-gH-lV4"/>
+                            <constraint firstAttribute="bottom" secondItem="9S0-vg-utF" secondAttribute="bottom" id="PiU-7q-aFp"/>
+                            <constraint firstItem="LIm-hA-rec" firstAttribute="trailing" secondItem="KqN-dD-71f" secondAttribute="trailing" constant="20" id="TtD-Yp-e5X"/>
+                            <constraint firstItem="KqN-dD-71f" firstAttribute="top" secondItem="LIm-hA-rec" secondAttribute="top" id="pLF-CD-FiO"/>
+                            <constraint firstItem="9S0-vg-utF" firstAttribute="trailing" secondItem="LIm-hA-rec" secondAttribute="trailing" id="rOQ-bA-sbW"/>
+                            <constraint firstItem="LIm-hA-rec" firstAttribute="bottom" secondItem="Lae-Ng-BKj" secondAttribute="bottom" constant="20" id="yvY-Xs-W2X"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LIm-hA-rec"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="9S0-vg-utF" id="RhL-9K-7sy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AK-Lx-LpF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="131"/>
+            <point key="canvasLocation" x="1037.68115942029" y="130.58035714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cross_icon" width="78" height="81"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

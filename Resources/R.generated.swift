@@ -114,10 +114,19 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.image` struct is generated, and contains static references to 1 images.
+  /// This `R.image` struct is generated, and contains static references to 2 images.
   struct image {
+    /// Image `cross_icon`.
+    static let cross_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "cross_icon")
     /// Image `placeholder`.
     static let placeholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "cross_icon", bundle: ..., traitCollection: ...)`
+    static func cross_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.cross_icon, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "placeholder", bundle: ..., traitCollection: ...)`
@@ -176,6 +185,14 @@ struct R: Rswift.Validatable {
     static func dailyWeatherCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DailyWeatherCell? {
       return R.nib.dailyWeatherCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DailyWeatherCell
     }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  struct reuseIdentifier {
+    /// Reuse identifier `cell`.
+    static let cell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "cell")
 
     fileprivate init() {}
   }
@@ -249,16 +266,24 @@ struct _R: Rswift.Validatable {
       typealias InitialController = HomeViewController
 
       let bundle = R.hostingBundle
+      let currentCitiesViewController = StoryboardViewControllerResource<CurrentCitiesViewController>(identifier: "CurrentCitiesViewController")
       let homeViewController = StoryboardViewControllerResource<HomeViewController>(identifier: "HomeViewController")
       let name = "Main"
+
+      func currentCitiesViewController(_: Void = ()) -> CurrentCitiesViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: currentCitiesViewController)
+      }
 
       func homeViewController(_: Void = ()) -> HomeViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: homeViewController)
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "cross_icon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cross_icon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "plus", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'plus' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
+        if _R.storyboard.main().currentCitiesViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'currentCitiesViewController' could not be loaded from storyboard 'Main' as 'CurrentCitiesViewController'.") }
         if _R.storyboard.main().homeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'homeViewController' could not be loaded from storyboard 'Main' as 'HomeViewController'.") }
       }
 

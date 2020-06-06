@@ -17,4 +17,6 @@ protocol HomePresenter {
     func refreshWithCurrentLocation()
     func updateHomeScreenContent(with data : Daily)
     func downloadImageForHomeScreen(with data : Daily)
+    
+    func showCurrentCitiesScreen()
 }

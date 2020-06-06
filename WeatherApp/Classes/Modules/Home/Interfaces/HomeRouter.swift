@@ -7,7 +7,9 @@
 //
 
 import Foundation
+
 protocol HomeRouter {
     
+    func showCurrentCitiesScreen()
 }
 

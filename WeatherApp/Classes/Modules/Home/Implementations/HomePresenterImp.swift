@@ -24,6 +24,7 @@ class HomePresenterImp: HomePresenter {
         
         self.weatherReportList = weatherReportList
         view?.reloadData()
+        router?.delegate = self
     }
     
     
@@ -86,6 +87,13 @@ class HomePresenterImp: HomePresenter {
     }
     
     
+    func showCurrentCitiesScreen() {
+        
+        
+        router?.showCurrentCitiesScreen()
+        
+    }
+    
 }
 
 
@@ -120,6 +128,20 @@ extension HomePresenterImp : TablePresenter {
     
     func updateCityName(with name : String) {
         view?.updateCityName(with: name)
+    }
+    
+    
+}
+
+
+
+extension HomePresenterImp : SavedCitiesProtocol {
+    
+    func didSelectPlace(with placeData: PlaceEntity) {
+        
+        
+        interactor?.changeLocation(with: placeData)
+        
     }
     
     

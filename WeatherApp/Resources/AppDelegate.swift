@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             setRootController(in: window)
         }
         
+        
+        GMSPlacesClient.provideAPIKey("AIzaSyCk9-2n3l7aDFkzQDZHu0gHiXzPNO_r368")
         
         return true
     }
