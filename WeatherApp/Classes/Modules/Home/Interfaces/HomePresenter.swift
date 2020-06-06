@@ -8,10 +8,13 @@
 
 import Foundation
 protocol HomePresenter {
+    
     var view: HomeViewController? { get set }
     var interactor: HomeInteractorImp? { get set }
     var router: HomeRouterImp? { get set }
  
     func populateData(with weatherReportList : [Daily])
-    
+    func refreshWithCurrentLocation()
+    func updateHomeScreenContent(with data : Daily)
+    func downloadImageForHomeScreen(with data : Daily)
 }

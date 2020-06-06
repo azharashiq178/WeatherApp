@@ -27,6 +27,12 @@ class HomePresenterImp: HomePresenter {
     }
     
     
+    func refreshWithCurrentLocation() {
+        interactor?.startTrackingUserLocation()
+    }
+    
+    
+    
     
     func updateHomeScreenContent(with data : Daily) {
         
@@ -69,9 +75,6 @@ class HomePresenterImp: HomePresenter {
 
                 downloader.download(urlRequest) { [weak self] response in
                     guard let weakSelf = self else { return }
-//                    print(response.request)
-//                    print(response.response)
-//                    debugPrint(response.result)
 
                     if case .success(let image) = response.result {
                         weakSelf.view?.updateWeatherImage(with: image)

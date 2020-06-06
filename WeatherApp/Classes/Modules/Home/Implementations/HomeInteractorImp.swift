@@ -17,7 +17,7 @@ class HomeInteractorImp: HomeInteractor {
     var weatherData : WeatherData?
     
     var nextWeekWeatherList = [Daily]()
-    
+    private var timeToRefetchLocationInMinutes = UInt(60 * 30)
     
     fileprivate lazy var scheduleLocationManager = ScheduledLocationManager()
     
@@ -40,8 +40,8 @@ class HomeInteractorImp: HomeInteractor {
     
     
     func startTrackingUserLocation() {
-        
-        let timeToRefetchLocationInMinutes = UInt(60 * 30)
+        scheduleLocationManager.stopGettingUserLocation()
+        timeToRefetchLocationInMinutes = UInt(1)
         
         scheduleLocationManager.getUserLocationWithInterval(interval: timeToRefetchLocationInMinutes)
         scheduleLocationManager.delegate = self
@@ -83,6 +83,12 @@ class HomeInteractorImp: HomeInteractor {
 extension HomeInteractorImp: ScheduledLocationManagerDelegate {
     
     func scheduledLocationManage(_ manager: ScheduledLocationManager, didUpdateLocation newLocation: CLLocation) {
+        
+        timeToRefetchLocationInMinutes = UInt(60 * 30)
+        
+        scheduleLocationManager.stopGettingUserLocation()
+        
+        scheduleLocationManager.getUserLocationWithInterval(interval: timeToRefetchLocationInMinutes)
         
         fetchWeatherForecastDataForSevenDays(with: newLocation)
         

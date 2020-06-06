@@ -13,6 +13,13 @@ class HomeRouterImp: RouterInterface {
     
     var baseView: BaseView?
 
+    
+    func showCurrentCitiesScreen() {
+        
+        
+        
+    }
+    
 }
 
 

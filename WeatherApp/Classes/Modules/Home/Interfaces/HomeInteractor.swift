@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol HomeInteractor {
     
@@ -14,5 +15,8 @@ protocol HomeInteractor {
     
     
     func startTrackingUserLocation()
+    func getHomeScreenContent(at index : Int) -> Daily
+    func updateHomeScreenContent(with data : Daily)
+    func fetchWeatherForecastDataForSevenDays(with location : CLLocation)
     
 }

@@ -112,6 +112,17 @@ class HomeViewController: UIViewController, HomeView {
     
     
     
+    @IBAction func moreAction(_ sender : UIButton) {
+        
+        
+    }
+    
+    
+    @IBAction func refreshAction(_ sender : UIButton) {
+        presenter?.refreshWithCurrentLocation()
+    }
+    
+    
 }
 
 
